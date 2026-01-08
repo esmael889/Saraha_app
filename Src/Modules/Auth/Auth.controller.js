@@ -55,7 +55,7 @@ try {
     //step1_ token
 
     const token=jwt.sign({email},process.env.EMAIL_KEY);
-    const verify_link=`https://sarahavarsion2.eu-4.evennode.com/auth/activate_account/${token}`
+    const verify_link=`${req.protocol}://${req.get('host')}/auth/activate_account/${token}`
    await sendEmail({
         to:email,
         subject:subject.register,
