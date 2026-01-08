@@ -18,6 +18,8 @@ app.use(cors({
     optionsSuccessStatus: 200 // Legacy support for some browsers
 }));
 
+app.options('*', cors()); // Enable pre-flight across-the-board
+
 app.use((req, res, next) => {
     // console.log(`[REQUEST] ${req.method} ${req.url}`);
     next();
