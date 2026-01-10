@@ -10,12 +10,16 @@ const app=express();
 configDotenv();
 
 app.use(cors({
-    origin: '*', // Allow all origins (for now, to fix the issue)
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        return callback(null, true);
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
     credentials: true,
     preflightContinue: false,
-    optionsSuccessStatus: 200 // Legacy support for some browsers
+    optionsSuccessStatus: 200
 }));
 
 app.options('*', cors()); // Enable pre-flight across-the-board
