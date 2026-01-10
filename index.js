@@ -10,11 +10,7 @@ const app=express();
 configDotenv();
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        return callback(null, true);
-    },
+    origin: true, // Reflects the request origin (Allows all + credentials)
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
     credentials: true,
