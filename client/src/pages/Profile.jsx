@@ -80,7 +80,7 @@ const Profile = () => {
                         boxShadow: '0 0 20px rgba(139, 92, 246, 0.4)'
                     }}>
                         <img
-                            src={user?.Image ? `${api.defaults.baseURL}/uploads/${user.Image}?t=${Date.now()}` : "https://via.placeholder.com/150"}
+                            src={user?.Image ? user.Image : "https://via.placeholder.com/150"}
                             alt="Profile"
                             style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', border: '4px solid var(--bg-deep)' }}
                         />
