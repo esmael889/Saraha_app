@@ -73,9 +73,8 @@ const profilePicture=async(req,res,next)=>{
         const user = await userModel.findById(req.user._id);
         if(!user) return next(new Error("User not found"));
 
-        // Save relative path: user/profile/filename
-        const relativePath = `user/profile/${req.file.filename}`;
-        user.Image = relativePath;
+        // Cloudinary puts the URL in req.file.path
+        user.Image = req.file.path;
         await user.save();
         
         res.json({message:"Profile Picture Updated", user});
