@@ -53,3 +53,5 @@ app.use((error,req,res,next)=>{
 app.listen(parseInt(process.env.PORT),()=>{
     console.log("Server is Runnning")
 })
+
+export default app;
